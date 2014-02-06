@@ -1,0 +1,51 @@
+body{
+	margin: 0px;
+	padding: 0px;
+	background-image: url("assets/images/17-hildur-runs-to-simba-east_1600.jpg");
+	background-size: 100%;
+	color: #fff;
+	font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-shadow: 0px 1px 5px rgba(0,0,0,0.1);
+}
+#page {
+
+}
+#center {
+	display: block;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	text-align: center;
+	-webkit-transform: translate(-50%,-50%);
+	-webkit-transform-origin: 50% 50%;	position: absolute;
+	z-index: 2;
+	opacity: .8;
+}
+h1.time {
+	text-align: center;
+	line-height: 1;
+	padding: 0;
+	margin: 0;
+	color: #fff;
+	letter-spacing: -5px;
+	font-size: 180px;
+	font-weight: lighter;
+}
+#greeting h2{
+	text-align: center;
+	line-height: 1;
+	padding: 0;
+	margin: 0;
+	color: #fff;
+	font-weight: lighter;
+	font-size: 54px;
+	letter-spacing: 0;
+	white-space: nowrap;
+}
+#top-right {
+	padding: 10px;
+	position: absolute;
+	top:0px;
+	right:0px;
+	opacity: .4;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link rel=stylesheet type="text/css" href="pm.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="500px.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		_500px.init({
+          sdk_key: '87acafe1dae0d35bddecd3e1fa87813f305ee0ea'
+    	});
+    	_500px.api('/photos', { feature: 'popular', page: 1, image_size: 4 }, function (response) {
+    			console.log(response.data.photos);
+				$("body").css("background-image","url("+response.data.photos[0].image_url+")");
+			}
+		);
+	});
+</script>
+</head>
+<body>
+	<DIV id="page">
+		<div id="top-right"><img width="100px"src="assets/images/logo2.png" /></div>
+		<div id="center">
+			<h1 class="time">
+				<script>
+					var d = new Date();
+    				var hour = d.getHours();
+    				var Min = d.getMinutes();
+    				if(hour<10) hour="0"+hour;
+    				if(Min<10) Min="0"+Min;
+    				var time = hour + ":" + Min;
+					document.write(time);</script></h1>
+			<div id="greeting">
+				<h2>Good evening, Joshra</h2>
+			</div>
+		</div>
+	</DIV>
+</body>
+</html>
