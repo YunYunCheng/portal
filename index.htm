@@ -5,25 +5,71 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="lib/500px.js"></script>
 <script type="text/javascript">
+	//document.cookie="username=sheep";
+	function setCookie(cname,cvalue,exdays)
+	{
+		var d = new Date();
+		d.setTime(d.getTime()+(exdays*24*60*60*1000));
+		var expires = "expires="+d.toGMTString();
+		document.cookie = cname + "=" + cvalue + "; " + expires;
+	}
+	function getCookie(cname)
+	{
+		var name = cname + "=";
+		var ca = document.cookie.split(';');
+		for(var i=0; i<ca.length; i++) 
+  		{
+	  	var c = ca[i].trim();
+	  	if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+		}
+		return "";
+	}
+
+	function checkCookie()
+	{
+	var user=getCookie("username");
+	if (user!="")
+	  {
+	  	setTimeout('$("#greeting .nice-day").fadeIn("slow");',1500 );
+	  	//alert("Welcome again " + user);
+	  }
+	else 
+	  {
+	  user = prompt("Please enter your name:","");
+	  if (user!="" && user!=null)
+	    {
+		    setCookie("username",user,365);
+		    $("#greeting .name").text(user);
+		    $("#greeting .nice-day").fadeIn("slow");
+	    }
+	  }
+	}
+	function del_cookie(name)
+	{
+	    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+	}
 	$(document).ready(function(){
         	$("#top-right img").hover(function(){
     		$("#top-right").css("opacity",".8");
         	},function(){
     		$("#top-right").css("opacity",".4");
     	        });
+        	checkCookie();
+
 
 		_500px.init({
           sdk_key: '87acafe1dae0d35bddecd3e1fa87813f305ee0ea'
     	});
     	_500px.api('/photos', { feature: 'popular', page: 1, image_size: 4 }, function (response) {
     			console.log(response.data.photos);
-				$("body").css("background-image","url("+response.data.photos[0].image_url+")");
+				$("#page").css("background-image","url("+response.data.photos[0].image_url+")");
+				$("#page").fadeIn(1000);
 			}
 		);
 	});
 </script>
 </head>
-<body>
+<body onload="">
 	<DIV id="page">
 		<div id="top-right"><img width="100px"src="assets/images/logo2.png" /></div>
 		<div id="center">
@@ -37,7 +83,7 @@
     				var time = hour + ":" + Min;
 					document.write(time);</script></h1>
 			<div id="greeting">
-				<h2>Good evening, Joshra</h2>
+				<h2 class="nice-day">Have a nice day, <span class="name"><script type="text/javascript">document.write(getCookie("username"));//del_cookie("username");</script></span></h2>
 			</div>
 		</div>
 	</DIV>
