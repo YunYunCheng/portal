@@ -6,6 +6,12 @@
 <script src="lib/500px.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+        	$("#top-right img").hover(function(){
+    		$("#top-right").css("opacity",".8");
+        	},function(){
+    		$("#top-right").css("opacity",".4");
+    	        });
+
 		_500px.init({
           sdk_key: '87acafe1dae0d35bddecd3e1fa87813f305ee0ea'
     	});
