@@ -60,7 +60,7 @@
 		_500px.init({
           sdk_key: '87acafe1dae0d35bddecd3e1fa87813f305ee0ea'
     	});
-    	_500px.api('/photos', { feature: 'popular', page: 1, image_size: 4 }, function (response) {
+    	_500px.api('/photos', { feature: 'editors', page: 1, image_size: 4 }, function (response) {
     			console.log(response.data.photos);
 				$("#page").css("background-image","url("+response.data.photos[0].image_url+")");
 				$("#page").fadeIn(1000);
